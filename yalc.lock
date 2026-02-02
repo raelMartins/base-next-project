@@ -1,8 +1,8 @@
 {
   "version": "v1",
   "packages": {
-    "@raelmartins/realtors-portal": {
-      "signature": "a278b3a5b4a8f24be7d09c7cfb94a4e2",
+    "@veerge/realtors-portal": {
+      "signature": "7e9d955cd8fc000b5fcf18c68f9411f7",
       "file": true
     }
   }
