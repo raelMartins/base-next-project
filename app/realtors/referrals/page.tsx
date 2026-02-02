@@ -1,6 +1,6 @@
 'use client';
-import { TransactionsPage } from '@veerge/realtors-portal';
+import { ReferralsPage } from '@veerge/realtors-portal';
 
 export default function MyReferralsPage() {
-  return <TransactionsPage apiKey='' userName={''} />;
+  return <ReferralsPage />;
 }
