@@ -33,7 +33,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased`}
       >
-        <RealtorsPortalProvider apiKey='' baseRoute={'/realtors'}>
+        <RealtorsPortalProvider accessToken='' baseRoute={'/realtors'}>
           {children}
         </RealtorsPortalProvider>
       </body>

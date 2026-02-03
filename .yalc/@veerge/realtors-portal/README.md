@@ -76,14 +76,22 @@ const nextConfig = {
 export default nextConfig;
 ```
 
-#### 4. Font Configuration (Inter)
+#### 4. Font Configuration (Inter) and RealtorsPortalProvider Wrapper
 
 This library expects the host application to provide the **Inter** font via a CSS variable.
+
+Also, all components exported from this library **must** be wrapped in the `RealtorsPortalProvider`. This handles:
+
+- Chakra UI Theme (Colors, Fonts)
+- React Query Client (Isolated cache management)
+
+This should be done in your base `layout.tsx` file if using app router `app.tsx` file if using pages router.
 
 **File:** `app/layout.tsx`
 
 ```tsx
 import { Inter } from 'next/font/google';
+import { RealtorsPortalProvider } from '@veerge/realtors-portal';
 
 // Load the font and assign it to the variable '--font-brand'
 const inter = Inter({
@@ -94,7 +102,9 @@ const inter = Inter({
 export default function RootLayout({ children }) {
   return (
     <html lang='en' className={inter.variable}>
-      <body>{children}</body>
+      <body>
+        <RealtorsPortalProvider>{children}</RealtorsPortalProvider>
+      </body>
     </html>
   );
 }
@@ -102,39 +112,27 @@ export default function RootLayout({ children }) {
 
 _Note: this font configuration wasn't working for me, but my device and browser reads Inter innately. I'm unsure if this is the case for all browsers._
 
+_Note 2: RealtorsPortalProvider accepts accessToken, which while be used to secure the package, and baseRoute, used to declare how realtors portal routes are prefixed, /realtors, /agents or /realtors-portal. It is compulsory._
+
 ---
 
 ## 💻 Usage
 
 You can login with the email `mistyladee00@gmail.com`
 
-### The LibraryProvider
-
-All components exported from this library **must** be wrapped in the `LibraryProvider`. This handles:
-
-- Chakra UI Theme (Colors, Fonts)
-- React Query Client (Isolated cache management)
-
 ### Example: Full Page Integration
 
 Import a full page component and place it directly in your route file.
 
-**File:** `app/transactions/page.tsx`
+**File:** `app/realtors/mypage/page.tsx`
 
 ```tsx
 'use client';
 
-import { LibraryProvider, TransactionsPage } from '@veerge/realtors-portal';
+import { ImportedPage } from '@veerge/realtors-portal';
 
 export default function MyPage() {
-  return (
-    <LibraryProvider>
-      <TransactionsPage
-        apiKey={process.env.NEXT_PUBLIC_API_KEY}
-        userName='Admin User'
-      />
-    </LibraryProvider>
-  );
+  return <ImportedPage />;
 }
 ```
 
@@ -154,13 +152,6 @@ export default function MyPage() {
 
 - `BaseLogin`
 - `AuthVerificationPage` (this should be used at the base of the realtor portl project ie `/agent`, `/realtors-portal`, or `/realtors`)
-
-### Types
-
-- `ListingsPageProps`
-- `ReferralsPageProps`
-- `TransactionPageProps`
-- `ProfilePageProps`
 
 ---
 
