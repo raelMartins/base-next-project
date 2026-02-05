@@ -1,6 +1,6 @@
 {
   "name": "@veerge/realtors-portal",
-  "version": "0.0.3",
+  "version": "0.0.9",
   "description": "The full blown realtors portal project for myxellia",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -41,16 +41,20 @@
     "@emotion/styled": ">=11",
     "@tanstack/react-query": ">=4",
     "axios": ">=1",
-    "framer-motion": ">=12",
-    "next": ">=13",
+    "framer-motion": ">=7",
+    "next": ">=14",
     "react": ">=18",
     "react-dom": ">=18",
-    "react-icons": "*"
+    "react-icons": "5.4"
   },
   "dependencies": {
+    "@veerge/utils": "^0.0.3",
+    "@vis.gl/react-google-maps": "^1.7.1",
     "cookies-next": "^4.3.0",
     "jose": "^6.1.3",
-    "moment": "^2.30.1"
+    "moment": "^2.30.1",
+    "qrcode.react": "^4.2.0",
+    "react-dropzone": "^14.4.0"
   },
-  "yalcSig": "1ac227baea89f8f34b969304f4136552"
+  "yalcSig": "8140947e34555deb0f3c2551777c2e64"
 }
