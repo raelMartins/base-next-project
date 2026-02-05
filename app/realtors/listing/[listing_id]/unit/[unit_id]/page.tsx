@@ -1,8 +1,6 @@
 'use client';
-import { ReferralsPage } from '@veerge/realtors-portal';
-import { useParams } from 'next/navigation';
+import { UnitProfilePage } from '@veerge/realtors-portal';
 
-export default function MyReferralsPage() {
-  const { id } = useParams();
-  return <ReferralsPage id={id as string} />;
+export default function MyUnitProfilePage() {
+  return <UnitProfilePage apiKey={''} />;
 }
