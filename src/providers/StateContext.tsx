@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, Suspense } from 'react';
 
 export interface StateContextProviderProps {
   children: React.ReactNode;
@@ -16,7 +16,7 @@ export const StateContextProvider = ({
 }: StateContextProviderProps) => {
   return (
     <StateContext.Provider value={{ ...props }}>
-      {children}
+      <Suspense fallback={<div>Loading</div>}>{children}</Suspense>
     </StateContext.Provider>
   );
 };
