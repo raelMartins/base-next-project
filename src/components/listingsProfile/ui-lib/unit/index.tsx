@@ -17,7 +17,6 @@ import { ReactElement, cloneElement, isValidElement } from 'react';
 import { UnitPageComponent } from './UnitPageComponent';
 import { useParams, useRouter } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
-import { fetchPaymentPlansForUnit, fetchPropertyUnits } from '@/api/listings';
 
 export const UnitModal = ({
   children,
