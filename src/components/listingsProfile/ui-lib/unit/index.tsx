@@ -5,26 +5,23 @@ import {
   Heading,
   Stack,
   useBreakpointValue,
-  useDisclosure,
-} from "@chakra-ui/react";
+  useDisclosure
+} from '@chakra-ui/react';
 // import React, { ReactElement, cloneElement, isValidElement } from "react";
-import ImageContainer from "../../ImageContainer";
-import PropertyInfo from "../../PropertyInfo";
-import LocationAndProfile from "../../LocationAndProfile";
-import { UnitInfo } from "./unitInfo";
-import FinanceAndFees from "./financeAndFees";
-import { ReactElement, cloneElement, isValidElement } from "react";
-import { UnitPageComponent } from "./UnitPageComponent";
-import { useParams, useRouter } from "next/navigation";
-import { useQuery } from "@tanstack/react-query";
-import {
-  fetchPaymentPlansForUnit,
-  fetchPropertyUnits,
-} from "@/api/listings";
+import ImageContainer from '../../ImageContainer';
+import PropertyInfo from '../../PropertyInfo';
+import LocationAndProfile from '../../LocationAndProfile';
+import { UnitInfo } from './unitInfo';
+import FinanceAndFees from './financeAndFees';
+import { ReactElement, cloneElement, isValidElement } from 'react';
+import { UnitPageComponent } from './UnitPageComponent';
+import { useParams, useRouter } from 'next/navigation';
+import { useQuery } from '@tanstack/react-query';
+import { fetchPaymentPlansForUnit, fetchPropertyUnits } from '@/api/listings';
 
 export const UnitModal = ({
   children,
-  unitId,
+  unitId
 }: {
   children: React.ReactNode;
   unitId: string;
@@ -32,7 +29,7 @@ export const UnitModal = ({
   const { isOpen, onOpen, onClose } = useDisclosure();
   const isMobile = useBreakpointValue({ base: true, md: false });
   const params = useParams();
-  const id = (unitId ?? "") || ((params.id as string) ?? "");
+  const id = (unitId ?? '') || ((params.id as string) ?? '');
   const router = useRouter();
 
   if (!isValidElement(children)) {
@@ -41,7 +38,7 @@ export const UnitModal = ({
 
   const childElement = children as ReactElement<any>;
   const CloneChild = cloneElement(childElement, {
-    cursor: "pointer",
+    cursor: 'pointer',
     onClick: () => {
       if (isMobile) {
         router.push(`/unit/${id}`);
@@ -49,7 +46,7 @@ export const UnitModal = ({
         onOpen();
       }
     },
-    role: "button",
+    role: 'button'
   });
   // console.log({ childElement, CloneChild, children });
   const handleClose = (e: React.MouseEvent<HTMLElement>) => {
@@ -63,24 +60,24 @@ export const UnitModal = ({
         <Box
           top={0}
           left={0}
-          w="100vw"
-          h="100vh"
-          bg="blackAlpha.400"
+          w='100vw'
+          h='100vh'
+          bg='blackAlpha.400'
           onClick={handleClose}
-          position="fixed"
+          position='fixed'
           zIndex={999}
-          display="grid"
-          placeContent="center"
+          display='grid'
+          placeContent='center'
         >
           <Stack
-            w="90.1vw"
-            overflow="auto"
-            bg="white"
-            h="96.89vh"
-            onClick={(e) => e.stopPropagation()}
-            maxH="872px"
-            maxW="1298px"
-            mx="auto"
+            w='90.1vw'
+            overflow='auto'
+            bg='white'
+            h='96.89vh'
+            onClick={(e: any) => e.stopPropagation()}
+            maxH='872px'
+            maxW='1298px'
+            mx='auto'
           >
             <UnitPageComponent closeModal={handleClose} unit_id={id} />
           </Stack>
