@@ -29,25 +29,25 @@ const getStoreNameFromUrl = (): string | null => {
 
 export const store_name = (): string => {
   return DEFAULT_STORE_NAME;
-  if (!appWindow) return DEFAULT_STORE_NAME;
+  // if (!appWindow) return DEFAULT_STORE_NAME;
 
-  const fromUrl = getStoreNameFromUrl();
-  if (fromUrl) {
-    try {
-      localStorage?.setItem(STORE_NAME_KEY, JSON.stringify(fromUrl));
-    } catch {
-      // ignore storage errors
-    }
-    return fromUrl;
-  }
+  // const fromUrl = getStoreNameFromUrl();
+  // if (fromUrl) {
+  //   try {
+  //     localStorage?.setItem(STORE_NAME_KEY, JSON.stringify(fromUrl));
+  //   } catch {
+  //     // ignore storage errors
+  //   }
+  //   return fromUrl;
+  // }
 
-  try {
-    const stored = localStorage?.getItem(STORE_NAME_KEY);
-    if (stored) return JSON.parse(JSON.stringify(stored)) as string;
-  } catch {
-    // ignore parse errors
-  }
-  return DEFAULT_STORE_NAME;
+  // try {
+  //   const stored = localStorage?.getItem(STORE_NAME_KEY);
+  //   if (stored) return JSON.parse(JSON.stringify(stored)) as string;
+  // } catch {
+  //   // ignore parse errors
+  // }
+  // return DEFAULT_STORE_NAME;
 };
 export const business_id = () =>
   (appWindow &&
