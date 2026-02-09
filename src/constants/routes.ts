@@ -43,7 +43,7 @@ export const store_name = (): string => {
 
   try {
     const stored = localStorage?.getItem(STORE_NAME_KEY);
-    if (stored) return JSON.parse(stored) as string;
+    if (stored) return JSON.parse(JSON.stringify(stored)) as string;
   } catch {
     // ignore parse errors
   }
