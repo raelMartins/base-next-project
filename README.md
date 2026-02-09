@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Realtors Portal
+
+A standalone Next.js application for the Myxellia Realtors Portal. Built with the App Router, Chakra UI v2, TypeScript, and React Query.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Environment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Copy `.env.example` to `.env.local` and set:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `NEXT_PUBLIC_SERVER_ENV` – `development` | `staging` | `production` (API base URL)
+- `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` – For the listings map
 
-## Learn More
+### Run
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Development
+npm run dev
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Production build
+npm run build
+npm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open [http://localhost:3000](http://localhost:3000). You’ll see the login page; after logging in you’re redirected to `/offerings`.
 
-## Deploy on Vercel
+## Routes (App Router)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Path | Description |
+|------|-------------|
+| `/` | Login (or magic-link verification when `?magic=...` is present) |
+| `/offerings` | Listings (Our Offerings) |
+| `/transactions` | Transactions |
+| `/referrals` | Referrals (drawer opened from menu) |
+| `/referrals/[id]` | Referral detail |
+| `/request` | Requests (inspection / commission) |
+| `/profile` | Profile |
+| `/listing/[listing_id]` | Listing profile |
+| `/unit/[unit_id]` | Unit profile |
+| `/transaction-summary?id=...&user_id=...` | Referral transaction summary |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Stack
+
+- **Next.js 15** (App Router)
+- **Chakra UI 2**
+- **TypeScript**
+- **React Query (TanStack Query)**
+- **Framer Motion**
+- **Axios**, **cookies-next**, **jose** (sessions)
+
+## Project structure
+
+- `src/app/` – App Router routes and root layout
+- `src/components/` – Shared UI and feature components
+- `src/layout/` – Navbar, footer, sidebar menu
+- `src/pages/` – Page-level components (used by app routes)
+- `src/api/` – API client and endpoints
+- `src/providers/` – React context (e.g. StateContext)
+- `src/utils/` – Formatting, theme, hooks
+- `src/constants/` – Routes, config, static data
+
+## Scripts
+
+- `npm run dev` – Start dev server
+- `npm run build` – Production build
+- `npm run start` – Start production server
+- `npm run lint` – Run Next.js lint
+
+## API / Backend
+
+The app talks to `https://${ENV}.matadortrust.com/v2` (and v1 where used). Auth uses cookie-based sessions (encrypted with jose). Set `NEXT_PUBLIC_SERVER_ENV` to match your environment.
+
+## Previously (library mode)
+
+This codebase was converted from a consumable library (`@veerge/realtors-portal`) to a standalone Next.js app. The previous README sections on yalc, peer dependencies, and host app setup no longer apply.

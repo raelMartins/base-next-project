@@ -1,18 +1,22 @@
-import type { NextConfig } from 'next';
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  transpilePackages: ['@veerge/realtors-portal'],
-  /* config options here */
-  reactStrictMode: false,
+  reactStrictMode: true,
+  transpilePackages: [],
   images: {
-    unoptimized: true,
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: '*'
-      }
-    ]
-  }
+        protocol: "https",
+        hostname: "*",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "*",
+        pathname: "/**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

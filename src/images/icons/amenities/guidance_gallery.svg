@@ -1,0 +1,10 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="guidance:gallery" clip-path="url(#clip0_17601_48009)">
+<path id="Vector" d="M0 19.5C3.314 19.5 6 17 6 15M6 15C6 17 8.686 19.5 12 19.5C15.314 19.5 18 17 18 15M6 15V23.5M18 15C18 17 20.686 19.5 24 19.5M18 15V23.5M4 23.5H8M16 23.5H20M21.5 12.5H2.5V0.5H21.5V12.5Z" stroke="#3D3D3D"/>
+</g>
+<defs>
+<clipPath id="clip0_17601_48009">
+<rect width="24" height="24" fill="white"/>
+</clipPath>
+</defs>
+</svg>
