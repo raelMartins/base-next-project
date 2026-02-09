@@ -17,7 +17,9 @@ function toAccountEntry(bank: ProfileBank): {
   dateAdded: string;
 } {
   const accountNumber =
-    bank.account_number ?? (bank as Record<string, unknown>).account_number ?? '';
+    bank.account_number ??
+    (bank as Record<string, unknown>).account_number ??
+    '';
   const bankName =
     bank.bank_name ??
     bank.bank ??
@@ -30,12 +32,18 @@ function toAccountEntry(bank: ProfileBank): {
     (bank as Record<string, unknown>).created_at ??
     (bank as Record<string, unknown>).date_added ??
     new Date().toISOString();
-  return { accountNumber, bank: bankName, dateAdded };
+  return {
+    accountNumber: accountNumber as string,
+    bank: bankName as string,
+    dateAdded: dateAdded as string
+  };
 }
 
 export const AccountDetails = () => {
   const { banks } = useProfileSettings();
-  const accounts = banks.map(toAccountEntry).filter((a) => a.accountNumber || a.bank);
+  const accounts = banks
+    .map(toAccountEntry)
+    .filter((a) => a.accountNumber || a.bank);
   return (
     <ProfileDetailLayout
       heading='Settlement Account'
@@ -43,7 +51,7 @@ export const AccountDetails = () => {
     >
       <VStack width='100%' gap='8px'>
         {accounts.length ? (
-          accounts.map((accountProps, index) => (
+          accounts.map((accountProps: any, index: number) => (
             <AccountDetail key={index} {...accountProps} />
           ))
         ) : (
