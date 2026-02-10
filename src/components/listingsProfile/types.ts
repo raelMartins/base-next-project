@@ -21,6 +21,7 @@ export interface listingDetailsProps {
   longitude: number;
   latitude: number;
   payment_plan_is_available: boolean;
+  units_available?: number;
 }
 
 export interface contactPersonProps {

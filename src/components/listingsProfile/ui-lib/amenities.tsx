@@ -24,18 +24,19 @@ const Amenities = ({
       >
         Amenities
       </Text>
+
       <Flex maxH="152px" h="full" gap="24px" flexWrap="wrap">
         {amenities.map((amenity, index) => (
           <HStack w="fit-content" key={index} spacing="8px">
-            {/* <Image
+            <Image
               alt={`${amenity.name} icon`}
-              src={`${
-                findAmenityByName(amenity?.name ?? "", ALL_AMENITIES_STORES)
-                  ?.icon?.src
-              }`}
+              src={`https://d1tfxqgzlmg1r3.cloudfront.net/amenities/${findAmenityByName(
+                amenity?.name ?? "",
+                ALL_AMENITIES_STORES
+              )}.svg`}
               boxSize="20px"
               fontSize="9px"
-            /> */}
+            />
             <Text
               fontWeight="400"
               fontSize="16px"

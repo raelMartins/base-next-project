@@ -5,24 +5,24 @@ import {
   Heading,
   Stack,
   StackDivider,
-  Text
-} from '@chakra-ui/react';
-import { ClosingCost } from './closingCost';
-import { UnitPriceHeader } from '../priceHeader';
+  Text,
+} from "@chakra-ui/react";
+import { ClosingCost } from "./closingCost";
+import { PriceHeader, UnitPriceHeader } from "../priceHeader";
 
 const FinanceAndFees = ({ unitInfo }: any) => {
   return (
     <Stack
-      p='24px'
-      spacing='24px'
+      p="24px"
+      spacing="24px"
       // minH="450px"
-      flex='1.5'
+      flex="1.5"
       //   bg="pink"
-      borderLeft='0.5px solid #D4D4D8'
-      maxW='521px'
-      minW='500px'
-      display={{ base: 'none', xl: 'flex' }}
-      divider={<StackDivider borderBottom='0.5px solid #D4D4D8 !important' />}
+      borderLeft="0.5px solid #D4D4D8"
+      maxW="521px"
+      minW="500px"
+      display={{ base: "none", xl: "flex" }}
+      divider={<StackDivider borderBottom="0.5px solid #D4D4D8 !important" />}
     >
       {/* <Stack spacing="8px">
         <Stack spacing="3px">
@@ -74,7 +74,7 @@ const FinanceAndFees = ({ unitInfo }: any) => {
 
       <ClosingCost
         fees={unitInfo?.fees ?? []}
-        display={{ base: 'none', xl: 'flex' }}
+        display={{ base: "none", xl: "flex" }}
       />
     </Stack>
   );

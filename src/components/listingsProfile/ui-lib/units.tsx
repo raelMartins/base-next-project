@@ -129,7 +129,7 @@ const UnitListComponent = ({ unit }: { unit: any }) => {
           />
           <Stack>
             <Text
-              fontSize="20px"
+              fontSize={{ base: "16px", xl: "20px" }}
               fontWeight="600"
               lineHeight="24px"
               letterSpacing="-2%"
@@ -167,9 +167,11 @@ const UnitListComponent = ({ unit }: { unit: any }) => {
                     letterSpacing="-1.1%"
                     color={unit?.quantity > 2 ? "#919191" : "#DC2626"}
                   >
-                    {`${formatNumberWithCommas(unit?.quantity)} unit${
-                      unit?.quantity === 1 ? "" : "s"
-                    } left`}
+                    {unit?.quantity === 0
+                      ? "Sold out"
+                      : `${formatNumberWithCommas(unit?.quantity)} unit${
+                          unit?.quantity === 1 ? "" : "s"
+                        } left`}
                   </Text>
                 </HStack>
               )}
@@ -184,7 +186,9 @@ const UnitListComponent = ({ unit }: { unit: any }) => {
             letterSpacing="-1%"
             color="#27272A"
           >
-            {formatToCurrency({ amount: unit?.price })}
+            {unit?.quantity === 0
+              ? "Sold Out"
+              : formatToCurrency({ amount: unit?.price })}
           </Text>
           <CaretRightIcon />
         </HStack>

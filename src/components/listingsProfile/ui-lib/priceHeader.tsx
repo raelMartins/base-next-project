@@ -2,6 +2,7 @@ import { Box, HStack, Stack, StackProps, Text } from "@chakra-ui/react";
 import React from "react";
 import { listingDetailsProps } from "../types";
 import { FormatToColorfulCurrency } from "@/utils/functions/formatAmount";
+import { formatNumberWithCommas } from "@veerge/utils";
 
 interface PriceHeaderProps extends StackProps {
   details: listingDetailsProps;
@@ -11,6 +12,9 @@ export const PriceHeader = ({ details, ...rest }: PriceHeaderProps) => {
   const isBuildingTypeSingleFamilyResidential =
     details?.building_type == "Detached" ||
     details?.building_type == "Semi Detached";
+  const isSoldOut =
+    typeof details?.units_available === "number" &&
+    details.units_available === 0;
   return (
     <Stack spacing="8px" {...rest}>
       <Stack spacing="3px">
@@ -24,16 +28,28 @@ export const PriceHeader = ({ details, ...rest }: PriceHeaderProps) => {
           {`${isBuildingTypeSingleFamilyResidential ? "" : "Starting"} Price`}
         </Text>
 
-        <FormatToColorfulCurrency
-          amount={details?.starting_from}
-          fontSize="36px"
-          fontWeight={600}
-          color="#116932"
-          decimalStyle={{
-            color: "#919191",
-          }}
-          wrapper={{ justifyContent: "start" }}
-        />
+        {isSoldOut ? (
+          <Text
+            fontSize="36px"
+            fontWeight={600}
+            lineHeight="100%"
+            letterSpacing="-2%"
+            color="#116932"
+          >
+            Sold Out
+          </Text>
+        ) : (
+          <FormatToColorfulCurrency
+            amount={details?.starting_from}
+            fontSize="36px"
+            fontWeight={600}
+            color="#116932"
+            decimalStyle={{
+              color: "#919191",
+            }}
+            wrapper={{ justifyContent: "start" }}
+          />
+        )}
       </Stack>
 
       <HStack spacing="10px">
@@ -51,7 +67,7 @@ export const PriceHeader = ({ details, ...rest }: PriceHeaderProps) => {
             </Text>
           </HStack>
         ) : null}
-        {details?.external_commission_rate ? (
+        {!isSoldOut && details?.external_commission_rate ? (
           <>
             <Box boxSize="4px" bg="#3F3F46" rounded="full" minW="4px" />
             <Text
@@ -60,8 +76,8 @@ export const PriceHeader = ({ details, ...rest }: PriceHeaderProps) => {
               lineHeight=" 100%"
               letterSpacing=" -1%"
             >
-              {`${Number(details?.external_commission_rate)?.toFixed(
-                2
+              {`${formatNumberWithCommas(
+                Number(details?.external_commission_rate)?.toFixed(2)
               )}% Commission`}
             </Text>
           </>
@@ -72,6 +88,8 @@ export const PriceHeader = ({ details, ...rest }: PriceHeaderProps) => {
 };
 
 export const UnitPriceHeader = ({ details, ...rest }: any) => {
+  const isSoldOut =
+    typeof details?.quantity === "number" && details.quantity === 0;
   return (
     <Stack spacing="8px" {...rest}>
       <Stack spacing="3px">
@@ -85,16 +103,28 @@ export const UnitPriceHeader = ({ details, ...rest }: any) => {
           Price
         </Text>
 
-        <FormatToColorfulCurrency
-          amount={details?.price}
-          fontSize="36px"
-          fontWeight={600}
-          color="#116932"
-          decimalStyle={{
-            color: "#919191",
-          }}
-          wrapper={{ justifyContent: "start" }}
-        />
+        {isSoldOut ? (
+          <Text
+            fontSize="36px"
+            fontWeight={600}
+            lineHeight="100%"
+            letterSpacing="-2%"
+            color="#116932"
+          >
+            Sold Out
+          </Text>
+        ) : (
+          <FormatToColorfulCurrency
+            amount={details?.price}
+            fontSize="36px"
+            fontWeight={600}
+            color="#116932"
+            decimalStyle={{
+              color: "#919191",
+            }}
+            wrapper={{ justifyContent: "start" }}
+          />
+        )}
       </Stack>
 
       <HStack spacing="10px">

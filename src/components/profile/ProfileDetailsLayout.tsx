@@ -4,11 +4,13 @@ export const ProfileDetailLayout = ({
   heading,
   buttonText,
   buttonAction,
+  buttonDisabled,
   children,
 }: {
   heading: string;
   buttonText: string;
   buttonAction?: () => void;
+  buttonDisabled?: boolean;
   children: React.ReactNode;
 }) => (
   <Grid
@@ -59,6 +61,7 @@ export const ProfileDetailLayout = ({
         _hover={{ bg: "rgba(0, 0, 0, 0.1)" }}
         _active={{ transform: "scale(0.9)" }}
         onClick={buttonAction}
+        isDisabled={buttonDisabled}
       >
         <Center width="100%" height={{ md: "40px", base: "50px" }} px="18px">
           <Text fontSize={{ md: "14px", base: "16px" }} fontWeight="500">

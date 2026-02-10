@@ -1,6 +1,5 @@
 import {
   Box,
-  Center,
   Flex,
   HStack,
   Image,
@@ -9,11 +8,12 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import MediaCarousel from "./ui-lib/media/mediaCarousel";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import useEmblaCarousel from "embla-carousel-react";
 import { SrcObjProp } from "./ui-lib/media/type";
 import { BackIcon } from "../assets/listings/backIcon";
-import { useRouter } from "next/navigation";
+import MediaCarousel from "./ui-lib/media/mediaCarousel";
 
 const ImageContainer = ({
   listOfMedia,
@@ -25,123 +25,151 @@ const ImageContainer = ({
   const [selectedMedia, setSelectedMedia] = useState(0);
   const modalDisclosure = useDisclosure();
   const router = useRouter();
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: false,
+    align: "start",
+    containScroll: "trimSnaps",
+  });
+
+  const [activeIndex, setActiveIndex] = useState(1);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setActiveIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    onSelect(); // Set initial index
+    emblaApi.on("select", onSelect); // Listen for slide changes
+    emblaApi.on("reInit", onSelect); // Re-run if data changes
+  }, [emblaApi, onSelect]);
+
   const displayItemsLeft = (listOfMedia: SrcObjProp[], num: number) =>
-    listOfMedia?.length - num;
+    (listOfMedia?.length || 0) - num;
 
   const handleClick = (id: number) => () => {
     setSelectedMedia(id);
     return modalDisclosure.onOpen();
   };
+
   return (
     <>
-      <Flex gap="12px" pos="relative" w="full">
+      <Box
+        display={{ base: "block", xl: "none" }}
+        w="full"
+        pos="relative"
+        overflow="hidden"
+      >
         <BackIcon
           pos="absolute"
           top="24px"
-          onClick={() => router.back()}
           left="23px"
-          display={{ md: "none", base: "inline-block" }}
+          zIndex={10}
+          onClick={() => router.back()}
         />
-        <Skeleton
-          startColor="#f5f5f5"
-          endColor="#e4e4e7"
-          isLoaded={!isLoading}
-          flex="2"
-          borderRadius={{ base: "none", xl: "12px" }}
-          w="full"
-        >
+
+        <Box overflow="hidden" pos="relative" ref={emblaRef}>
+          <Flex>
+            {isLoading ? (
+              <Skeleton w="full" h="300px" />
+            ) : (
+              listOfMedia?.map((item, index) => (
+                <Box
+                  key={index}
+                  flex="0 0 100%" // Force each slide to be 100% width
+                  minW={0}
+                  h="350px"
+                >
+                  <Image
+                    src={item.url}
+                    alt={`mobile-img-${index}`}
+                    w="full"
+                    h="full"
+                    objectFit="cover"
+                  />
+                </Box>
+              ))
+            )}
+          </Flex>
+          {listOfMedia?.length < 2 ? null : (
+            <HStack
+              pos="absolute"
+              bottom="20px"
+              right="18px"
+              display={{ base: "flex", xl: "none" }}
+              rounded="200px"
+              p="10px 16px"
+              spacing="4px"
+              background="#00000033"
+              boxShadow="0 4px 30px rgba(0, 0, 0, 0.1)"
+              backdropFilter="blur(7.21px)"
+            >
+              <Text
+                fontWeight="500"
+                fontSize="16px"
+                color="#ffffff"
+                lineHeight="100%"
+                letterSpacing="-2%"
+              >
+                {activeIndex + 1}/{listOfMedia?.length}
+              </Text>
+            </HStack>
+          )}
+        </Box>
+      </Box>
+
+      <Flex
+        gap="12px"
+        pos="relative"
+        w="full"
+        display={{ base: "none", xl: "flex" }}
+      >
+        <Skeleton isLoaded={!isLoading} flex="2" borderRadius="12px">
           <Image
             src={listOfMedia?.[0]?.url}
-            fontSize="13px"
             onClick={handleClick(0)}
-            pointerEvents={{ base: "none", md: "initial" }}
-            cursor="pointer"
-            alt="images"
-            borderRadius={{ base: "none", xl: "12px" }}
-            // flex="2"
+            cursor="zoom-in"
+            alt="main-image"
+            borderRadius="12px"
             h="562px"
             w="full"
-            bg="#00000066"
             objectFit="cover"
           />
         </Skeleton>
-        {/* <HStack
-          pos="absolute"
-          bottom="20px"
-          right="18px"
-          display={{ base: "flex", xl: "none" }}
-          rounded="200px"
-          p="10px 16px"
-          spacing="4px"
-          background="#00000033"
-          boxShadow="0 4px 30px rgba(0, 0, 0, 0.1)"
-          backdropFilter="blur(7.21px)"
-        >
-          <Text
-            fontWeight="500"
-            fontSize="16px"
-            color="#ffffff"
-            lineHeight="100%"
-            letterSpacing="-2%"
-          >
-            02/48
-          </Text>
-        </HStack> */}
-        {listOfMedia?.[1]?.url || isLoading || listOfMedia?.[2]?.url ? (
-          <Stack
-            display={{ base: "none", xl: "flex" }}
-            flex="1"
-            w="full"
-            spacing="12px"
-            h="562px"
-          >
-            {listOfMedia?.[1]?.url || isLoading ? (
-              <Skeleton
-                startColor="#f5f5f5"
-                endColor="#e4e4e7"
-                isLoaded={!isLoading}
+
+        {listOfMedia?.length > 1 || isLoading ? (
+          <Stack flex="1" spacing="12px" h="562px">
+            <Skeleton isLoaded={!isLoading} h="full" borderRadius="12px">
+              <Image
+                src={listOfMedia?.[1]?.url}
+                onClick={handleClick(1)}
+                cursor="zoom-in"
+                rounded="12px"
                 h="full"
-                borderRadius={{ base: "none", xl: "12px" }}
                 w="full"
-              >
-                <Image
-                  src={listOfMedia?.[1]?.url}
-                  fontSize="13px"
-                  onClick={handleClick(1)}
-                  cursor="pointer"
-                  alt="more images"
-                  rounded="12px"
-                  h="full"
-                  w="full"
-                  bg="#00000066"
-                  objectFit="cover"
-                />
-              </Skeleton>
-            ) : null}
-            {!!listOfMedia?.[2]?.url || isLoading ? (
-              <Skeleton
-                startColor="#f5f5f5"
-                endColor="#e4e4e7"
-                isLoaded={!isLoading}
-                h="full"
-                borderRadius={{ base: "none", xl: "12px" }}
-                w="full"
-              >
+                objectFit="cover"
+              />
+            </Skeleton>
+
+            {(listOfMedia?.[2]?.url || isLoading) && (
+              <Skeleton isLoaded={!isLoading} h="full" borderRadius="12px">
                 <Box rounded="12px" h="full" overflow="hidden" pos="relative">
                   <Image
                     src={listOfMedia?.[2]?.url}
-                    fontSize="13px"
                     onClick={handleClick(2)}
-                    cursor="pointer"
-                    alt="more images"
+                    cursor="zoom-in"
                     rounded="12px"
                     h="full"
                     w="full"
                     objectFit="cover"
                   />
-                  {!!displayItemsLeft(listOfMedia, 3) ? (
+                  {displayItemsLeft(listOfMedia, 3) > 0 && (
                     <Box
                       pos="absolute"
+                      pointerEvents="none"
                       display="grid"
                       placeContent="center"
                       top={0}
@@ -150,18 +178,17 @@ const ImageContainer = ({
                       h="full"
                     >
                       <Text color="#fff" borderBottom="2px solid #ffffff">
-                        {`+${displayItemsLeft(listOfMedia, 3)} photo${
-                          displayItemsLeft(listOfMedia, 3) > 1 ? "s" : ""
-                        }`}
+                        {`+${displayItemsLeft(listOfMedia, 3)} more`}
                       </Text>
                     </Box>
-                  ) : null}
+                  )}
                 </Box>
               </Skeleton>
-            ) : null}
+            )}
           </Stack>
         ) : null}
       </Flex>
+
       <MediaCarousel
         setSelectedMedia={setSelectedMedia}
         listOfMedia={listOfMedia}

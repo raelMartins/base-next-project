@@ -16,7 +16,7 @@ export const updateRealtorSettings = async (body: any) => {
 
   return await agent_auth_fetch.patch(
     `${BaseURL}/agents/settings/?store_name=${storeName}`,
-    body
+    {...body,profile_update: true}
   );
 };
 

@@ -100,8 +100,8 @@ export const ListingsPage = () => {
         >
           <Map
             markers={markers}
-            defaultZoom={10}
-            defaultCenter={{ lat: 6.6173, lng: 3.3553 }}
+            defaultZoom={5}
+            defaultCenter={{ lat: 8.5, lng: 2.5 }}
             containerStyling={{
               width: '100%',
               height: 'calc(100dvh - 64px - 49px)',

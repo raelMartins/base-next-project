@@ -1,5 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
-import { fetchRealtorSettingsInfo } from '@/api/profile';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { fetchRealtorSettingsInfo, updateRealtorSettings } from '@/api/profile';
 import {
   getProfilePayload,
   ProfileSettingsResponse
@@ -8,9 +8,17 @@ import {
 export const PROFILE_SETTINGS_QUERY_KEY = ['account-settings-info'] as const;
 
 export function useProfileSettings() {
+  const queryClient = useQueryClient();
   const query = useQuery({
     queryKey: PROFILE_SETTINGS_QUERY_KEY,
     queryFn: fetchRealtorSettingsInfo
+  });
+
+  const updateMutation = useMutation({
+    mutationFn: (body: Record<string, unknown>) => updateRealtorSettings(body),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: PROFILE_SETTINGS_QUERY_KEY });
+    }
   });
 
   const payload: ProfileSettingsResponse | null =
@@ -21,6 +29,10 @@ export function useProfileSettings() {
     profile: payload,
     user: payload?.user ?? null,
     verification: payload?.verification ?? null,
-    banks: payload?.banks ?? []
+    banks: payload?.banks ?? [],
+    updateSettings: updateMutation.mutate,
+    updateSettingsAsync: updateMutation.mutateAsync,
+    isUpdatingSettings: updateMutation.isPending,
+    updateSettingsError: updateMutation.error
   };
 }

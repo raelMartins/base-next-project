@@ -58,6 +58,8 @@ const ListingCardDetails = (props: ListingType) => {
     commissionStr != null && Number.isFinite(parseFloat(commissionStr))
       ? parseFloat(commissionStr)
       : undefined;
+  const isSoldOut =
+    typeof props.units_available === 'number' && props.units_available === 0;
 
   return (
     <VStack
@@ -79,7 +81,8 @@ const ListingCardDetails = (props: ListingType) => {
           name={props.name}
           address={props.address}
           price={props.starting_from ?? 0}
-          commission={commission}
+          commission={isSoldOut ? undefined : commission}
+          isSoldOut={isSoldOut}
         />
         <Box width='100%' display={{ md: 'block', base: 'none' }}>
           <Amenities />
@@ -97,12 +100,14 @@ const ListingNameLocationAndPrice = ({
   name,
   address,
   price,
-  commission
+  commission,
+  isSoldOut
 }: {
   name?: string;
   address?: string;
   price: number;
   commission?: number;
+  isSoldOut?: boolean;
 }) => {
   const formattedPrice = formatToCurrency({ amount: price });
 
@@ -134,7 +139,7 @@ const ListingNameLocationAndPrice = ({
           letterSpacing='-1.1%'
           color='#27272A'
         >
-          {formattedPrice}
+          {isSoldOut ? 'Sold Out' : formattedPrice}
         </Text>
       </Center>
       <Center justifyContent='flex-start' gap='4px' color='#52525B'>
@@ -176,6 +181,11 @@ const PaymentPlanAvailabilityAndUnits = ({
   isPaymentPlanAvailable?: boolean;
   availableUnits?: number;
 }) => {
+  const showUnits =
+    typeof availableUnits === 'number' && availableUnits <= 2;
+  const hasAnyContent = isPaymentPlanAvailable || showUnits;
+  if (!hasAnyContent) return null;
+
   return (
     <HStack
       position='relative'
@@ -195,39 +205,39 @@ const PaymentPlanAvailabilityAndUnits = ({
         } as React.CSSProperties
       }
     >
-      <Center
-        gap='4px'
-        height={{ md: 'auto', base: '28px' }}
-        roundedLeft={{ md: 'none', base: '4px' }}
-        bg={{ md: 'transparent', base: '#16A34A' }}
-        color={{ md: 'var(--payment-availability-color)', base: 'white' }}
-        px={{ md: '0', base: '12px' }}
-      >
+      {isPaymentPlanAvailable ? (
         <Center
-          boxSize='28px'
-          minWidth='28px'
-          rounded='full'
-          bg='var(--payment-availability-color)'
-          color='white'
-          fontSize='16px'
-          display={{ md: 'flex', base: 'none' }}
+          gap='4px'
+          height={{ md: 'auto', base: '28px' }}
+          roundedLeft={{ md: 'none', base: '4px' }}
+          bg={{ md: 'transparent', base: '#16A34A' }}
+          color={{ md: 'var(--payment-availability-color)', base: 'white' }}
+          px={{ md: '0', base: '12px' }}
         >
-          <CardholderIcon />
+          <Center
+            boxSize='28px'
+            minWidth='28px'
+            rounded='full'
+            bg='var(--payment-availability-color)'
+            color='white'
+            fontSize='16px'
+            display={{ md: 'flex', base: 'none' }}
+          >
+            <CardholderIcon />
+          </Center>
+          <Text
+            fontSize='13px'
+            fontWeight='600'
+            lineHeight='20px'
+            letterSpacing='-1.1%'
+            color='inherit'
+            textDecoration={{ md: 'underline', base: 'none' }}
+          >
+            Payment Plan Available
+          </Text>
         </Center>
-        <Text
-          fontSize='13px'
-          fontWeight='600'
-          lineHeight='20px'
-          letterSpacing='-1.1%'
-          color='inherit'
-          textDecoration={{ md: 'underline', base: 'none' }}
-        >
-          {isPaymentPlanAvailable
-            ? 'Payment Plan Available'
-            : 'Payment Plan Unavailable'}
-        </Text>
-      </Center>
-      {typeof availableUnits === 'number' ? (
+      ) : null}
+      {showUnits ? (
         <HStack
           align='center'
           ml='4px'
@@ -251,7 +261,7 @@ const PaymentPlanAvailabilityAndUnits = ({
             letterSpacing='-1.1%'
             color='inherit'
           >
-            {`${Math.max(0, availableUnits)} ${availableUnits === 1 ? 'unit' : 'units'}`}
+            {`${Math.max(0, availableUnits)} ${availableUnits === 1 ? 'unit' : 'units'} left`}
           </Text>
         </HStack>
       ) : null}

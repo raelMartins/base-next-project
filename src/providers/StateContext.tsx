@@ -16,7 +16,10 @@ export const StateContextProvider = ({
 }: StateContextProviderProps) => {
   return (
     <StateContext.Provider value={{ ...props }}>
-      <Suspense fallback={<div>Loading</div>}>{children}</Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
+      {children}
+      </Suspense>
+
     </StateContext.Provider>
   );
 };

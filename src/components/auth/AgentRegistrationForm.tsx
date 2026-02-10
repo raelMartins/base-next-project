@@ -156,7 +156,7 @@ export const AgentRegistrationForm = ({
             <FormLabel fontSize='13px'>First name</FormLabel>
             <Input
               value={form.first_name}
-              onChange={(e: any) => update('first_name', e.target.value)}
+              onChange={(e:any) => update('first_name', e.target.value)}
               placeholder='Enter first name'
               fontSize='14px'
               bg='white'
@@ -167,7 +167,7 @@ export const AgentRegistrationForm = ({
             <FormLabel fontSize='13px'>Last name</FormLabel>
             <Input
               value={form.last_name}
-              onChange={(e: any) => update('last_name', e.target.value)}
+              onChange={(e:any) => update('last_name', e.target.value)}
               placeholder='Enter last name'
               fontSize='14px'
               bg='white'
@@ -178,7 +178,7 @@ export const AgentRegistrationForm = ({
             <FormLabel fontSize='13px'>Middle name</FormLabel>
             <Input
               value={form.middle_name}
-              onChange={(e: any) => update('middle_name', e.target.value)}
+              onChange={(e:any) => update('middle_name', e.target.value)}
               placeholder='Enter middle name'
               fontSize='14px'
               bg='white'
@@ -200,7 +200,7 @@ export const AgentRegistrationForm = ({
             <FormLabel fontSize='13px'>Phone number</FormLabel>
             <Input
               value={form.phone}
-              onChange={(e: any) => update('phone', e.target.value)}
+              onChange={(e:any) => update('phone', e.target.value)}
               placeholder='Enter phone number'
               fontSize='14px'
               bg='white'
@@ -223,7 +223,7 @@ export const AgentRegistrationForm = ({
             <Box
               as='select'
               value={form.gender}
-              onChange={(e: any) =>
+              onChange={(e:any) =>
                 update('gender', (e.target as HTMLSelectElement).value)
               }
               fontSize='14px'
@@ -246,7 +246,7 @@ export const AgentRegistrationForm = ({
             <Box
               as='select'
               value={form.marital_status}
-              onChange={(e: any) =>
+              onChange={(e:any) =>
                 update('marital_status', (e.target as HTMLSelectElement).value)
               }
               fontSize='14px'
@@ -268,7 +268,7 @@ export const AgentRegistrationForm = ({
             <Box
               as='select'
               value={form.highest_education}
-              onChange={(e: any) =>
+              onChange={(e:any) =>
                 update(
                   'highest_education',
                   (e.target as HTMLSelectElement).value
@@ -299,7 +299,7 @@ export const AgentRegistrationForm = ({
             <Box
               as='select'
               value={form.employment_status}
-              onChange={(e: any) =>
+              onChange={(e:any) =>
                 update(
                   'employment_status',
                   (e.target as HTMLSelectElement).value
@@ -325,7 +325,7 @@ export const AgentRegistrationForm = ({
               <FormLabel fontSize='13px'>Residential address</FormLabel>
               <Input
                 value={form.address}
-                onChange={(e: any) => update('address', e.target.value)}
+                onChange={(e:any) => update('address', e.target.value)}
                 placeholder='Enter residential address'
                 fontSize='14px'
                 bg='white'
@@ -337,7 +337,7 @@ export const AgentRegistrationForm = ({
             <FormLabel fontSize='13px'>Company name (optional)</FormLabel>
             <Input
               value={form.company_name}
-              onChange={(e: any) => update('company_name', e.target.value)}
+              onChange={(e:any) => update('company_name', e.target.value)}
               placeholder='Company name'
               fontSize='14px'
               bg='white'
@@ -348,7 +348,7 @@ export const AgentRegistrationForm = ({
             <FormLabel fontSize='13px'>Company address (optional)</FormLabel>
             <Input
               value={form.company_address}
-              onChange={(e: any) => update('company_address', e.target.value)}
+              onChange={(e:any) => update('company_address', e.target.value)}
               placeholder='Company address'
               fontSize='14px'
               bg='white'
@@ -374,7 +374,7 @@ export const AgentRegistrationForm = ({
 
         <Checkbox
           isChecked={termsAccepted}
-          onChange={(e: any) => setTermsAccepted(e.target.checked)}
+          onChange={(e:any) => setTermsAccepted(e.target.checked)}
           colorScheme='gray'
           size='sm'
         >

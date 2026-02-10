@@ -54,6 +54,8 @@ const ContactPerson = ({ listing_id }: { listing_id: string }) => {
                   {contact?.name}
                 </Text>
                 <Text
+                  as="a"
+                  href={`tel:${contact?.phone_number}`}
                   fontWeight="400"
                   fontSize="13px"
                   lineHeight="100%"

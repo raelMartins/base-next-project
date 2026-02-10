@@ -11,9 +11,9 @@ export const LayoutWrapper = ({
   children: ReactNode;
 }) => {
   return (
-    <Stack minH="100vh" gap={0} overflowX="hidden">
+    <Stack minH="100vh" gap={0} overflowX="clip">
       <Navbar />
-      <Box flex={1} minH={0} w="100%" overflowX="hidden">
+      <Box flex={1} minH={0} w="100%" overflowX="clip">
         {children}
       </Box>
       <Footer />

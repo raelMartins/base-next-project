@@ -1,4 +1,12 @@
-import { FormControl, FormLabel, Grid, GridItem, Text } from "@chakra-ui/react";
+import { useRef } from "react";
+import {
+  FormControl,
+  FormLabel,
+  Grid,
+  GridItem,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
 import TextInput, { TextInputProps } from "@/components/profile/TextInput";
 import SelectInput, {
   SelectInputProps,
@@ -74,8 +82,37 @@ const EDUCATION_OPTIONS = [
   { title: "Masters", value: "Masters" },
 ];
 
+function getFormBody(form: HTMLFormElement): Record<string, unknown> {
+  const formData = new FormData(form);
+  const body: Record<string, unknown> = {};
+  const str = (key: string) => {
+    const v = formData.get(key);
+    return v != null && v !== "" ? String(v) : undefined;
+  };
+  const phone = str("phone_number");
+  if (phone !== undefined) body.phone = phone;
+  const alternatePhone = str("alternate_phone_number");
+  if (alternatePhone !== undefined) body.alternate_phone_number = alternatePhone;
+  const dob = str("date_of_birth");
+  if (dob !== undefined) body.date_of_birth = dob;
+  const marital = str("marital_status");
+  if (marital !== undefined) body.marital_status = marital;
+  const education = str("level_of_education");
+  if (education !== undefined) body.highest_education = education;
+  const companyName = str("company_name");
+  if (companyName !== undefined) body.company_name = companyName;
+  const companyAddress = str("company_address");
+  if (companyAddress !== undefined) body.company_address = companyAddress;
+  const address = str("residential_address");
+  if (address !== undefined) body.address = address;
+  return body;
+}
+
 export const BasicDetails = () => {
-  const { user, verification } = useProfileSettings();
+  const formRef = useRef<HTMLFormElement>(null);
+  const toast = useToast();
+  const { user, verification, updateSettings, isUpdatingSettings } =
+    useProfileSettings();
   const docs = verification?.docs ?? [];
   const identityDoc = docs[0];
   const identityDocDefaultValue = identityDoc
@@ -93,8 +130,54 @@ export const BasicDetails = () => {
       ]
     : undefined;
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+    const body = getFormBody(formRef.current);
+    updateSettings(body, {
+      onSuccess: () => {
+        toast({
+          title: "Profile updated",
+          description: "Your basic details have been saved.",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          position: "top-right",
+        });
+      },
+      onError: (err: unknown) => {
+        const message =
+          err &&
+          typeof err === "object" &&
+          "response" in err &&
+          err.response &&
+          typeof err.response === "object" &&
+          "data" in err.response &&
+          err.response.data &&
+          typeof err.response.data === "object" &&
+          "message" in err.response.data
+            ? String((err.response.data as { message?: unknown }).message)
+            : "Something went wrong. Please try again.";
+        toast({
+          title: "Update failed",
+          description: message,
+          status: "error",
+          duration: 8000,
+          isClosable: true,
+          position: "top-right",
+        });
+      },
+    });
+  };
+
   return (
-    <ProfileDetailLayout heading="Basic Details" buttonText="Edit">
+    <ProfileDetailLayout
+      heading="Basic Details"
+      buttonText={isUpdatingSettings ? "Saving…" : "Save"}
+      buttonAction={() => formRef.current?.requestSubmit()}
+      buttonDisabled={isUpdatingSettings}
+    >
+    <form ref={formRef} onSubmit={handleSubmit} style={{ width: "100%" }}>
     <Grid
       width="100%"
       gridTemplateColumns={{ xl: "repeat(2, 1fr)", base: "1fr" }}
@@ -199,6 +282,7 @@ export const BasicDetails = () => {
         </GridItem>
       ))}
     </Grid>
+    </form>
   </ProfileDetailLayout>
   );
 };

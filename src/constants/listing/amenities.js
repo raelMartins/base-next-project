@@ -101,107 +101,107 @@ import reacreationalArea from "@/images/icons/amenities/recreational-area.svg";
 
 export const AMENITIES_STORE = [
   {
-    icon: carPark,
+    icon: "carPark",
     name: "Car park",
   },
   {
-    icon: gym,
+    icon: "gym",
     name: "Gym",
   },
   // {
-  //   icon: garden,
+  //   icon: 'garden',
   //   name: 'Playground',
   // },
   {
-    icon: swimmingPool,
+    icon: "swimmingPool",
     name: "Swimming pool",
   },
   {
-    icon: reacreationalArea,
+    icon: "reacreationalArea",
     name: "Recreational Area",
   },
   {
-    icon: footballPitch,
+    icon: "footballPitch",
     name: "Football pitch",
   },
   // {
-  //   icon: basketballCourt,
+  //   icon: 'basketballCourt',
   //   name: 'Basketball court',
   // },
   {
-    icon: worshipCenter,
+    icon: "worshipCenter",
     name: "Worship Center",
   },
   {
-    icon: shoppingComplex,
+    icon: "shoppingComplex",
     name: "Shopping Complex",
   },
   {
-    icon: streetLights,
+    icon: "streetLights",
     name: "Street Lights",
   },
   {
-    icon: garden,
+    icon: "garden",
     name: "Garden",
   },
   {
-    icon: internet,
+    icon: "internet",
     name: "Internet/Wifi",
   },
   // {
-  //   icon: cctv,
+  //   icon: 'cctv',
   //   name: 'CCTV',
   // },
   {
-    icon: alternativePowerSupply,
+    icon: "alternativePowerSupply",
     name: "Alternative Power Supply",
   },
   {
-    icon: school,
+    icon: "school",
     name: "School",
   },
   {
-    icon: healthFacility,
+    icon: "healthFacility",
     name: "Health Facility",
   },
   {
-    icon: heliPad,
+    icon: "heliPad",
     name: "Helipad",
   },
   {
-    icon: tennisCourt,
+    icon: "tennisCourt",
     name: "Tennis court",
   },
   // {
-  //   icon: elevator,
+  //   icon: 'elevator',
   //   name: 'Elevator',
   // },
   // {
-  //   icon: bar,
+  //   icon: 'bar',
   //   name: 'Bar',
   // },
   {
-    icon: lounge,
+    icon: "lounge",
     name: "Lounge",
   },
   {
-    icon: beachFront,
+    icon: "beachFront",
     name: "Beach front",
   },
   {
-    icon: security,
+    icon: "security",
     name: "Security",
   },
   {
-    icon: powerSupply,
+    icon: "powerSupply",
     name: "24 hours Light",
   },
   {
-    icon: golfCourse,
+    icon: "golfCourse",
     name: "Golf course",
   },
   {
-    icon: spa,
+    icon: "spa",
     name: "Spa",
   },
 ];
@@ -210,399 +210,399 @@ export default AMENITIES_STORE;
 
 export const OTHER_AMENITIES_STORE = [
   {
-    icon: recycling,
+    icon: "recycling",
     name: "Recycling pickup service",
   },
   {
-    icon: resident,
+    icon: "resident",
     name: "Resident app for maintenance requests",
   },
   {
-    icon: shopper,
+    icon: "shopper",
     name: "Personal shopper",
   },
   {
-    icon: backup_gen,
+    icon: "backup_gen",
     name: "Emergency backup generators",
   },
   {
-    icon: carbon_delivery_parcel,
+    icon: "carbon_delivery_parcel",
     name: "Grocery delivery service",
   },
   {
-    icon: healthicons_bike_outline,
+    icon: "healthicons_bike_outline",
     name: "Bike share program",
   },
   {
-    icon: mdi_voucher_outline,
+    icon: "mdi_voucher_outline",
     name: "Car wash vouchers",
   },
   {
-    icon: bi_scooter,
+    icon: "bi_scooter",
     name: "Electric scooter rentals",
   },
   {
-    icon: iconoir_delivery_truck,
+    icon: "iconoir_delivery_truck",
     name: "Food truck events",
   },
   {
-    icon: tabler_walk,
+    icon: "tabler_walk",
     name: "Walking distance to public transit",
   },
   {
-    icon: ic_outline_local_laundry_service,
+    icon: "ic_outline_local_laundry_service",
     name: "On-site dry cleaning and laundry service",
   },
   {
-    icon: game_icons_tightrope,
+    icon: "game_icons_tightrope",
     name: "Zip-line or ropes course",
   },
   {
-    icon: game_icons_greenhouse,
+    icon: "game_icons_greenhouse",
     name: "Plant nursery",
   },
   {
-    icon: carbon_tool_kit,
+    icon: "carbon_tool_kit",
     name: "24-hour maintenance",
   },
   {
-    icon: material_symbols_wall_art_outline,
+    icon: "material_symbols_wall_art_outline",
     name: "Artisanal market days",
   },
   {
-    icon: game_icon_greenhouse,
+    icon: "game_icon_greenhouse",
     name: "Greenhouse",
   },
   {
-    icon: guidance_charging_station,
+    icon: "guidance_charging_station",
     name: "Electric bike charging stations",
   },
   {
-    icon: carbon_tool_kiit,
+    icon: "carbon_tool_kiit",
     name: "Bike maintenance workshops",
   },
   {
-    icon: bed_alt,
+    icon: "bed_alt",
     name: "Guest suites for visitors",
   },
   {
-    icon: zen_garden,
+    icon: "zen_garden",
     name: "Zen garden",
   },
   {
-    icon: valet_parking,
+    icon: "valet_parking",
     name: "Valet parking",
   },
   {
-    icon: emojione_monotone_basketball,
+    icon: "emojione_monotone_basketball",
     name: "Basketball court",
   },
   {
-    icon: iconoir_yoga,
+    icon: "iconoir_yoga",
     name: "Wellness Centre",
   },
   {
-    icon: u_dumbbell,
+    icon: "u_dumbbell",
     name: "Fitness Centre",
   },
   {
-    icon: iconoir_yoga,
+    icon: "iconoir_yoga",
     name: "Yoga",
   },
   {
-    icon: streamline_travel_beach_island_wave,
+    icon: "streamline_travel_beach_island_wave",
     name: "Outdoor picnic area",
   },
   {
-    icon: map_playground,
+    icon: "map_playground",
     name: "Children Playground",
   },
   {
-    icon: game_icons_jumping_dog,
+    icon: "game_icons_jumping_dog",
     name: "Dog park",
   },
   {
-    icon: material_symbols_pets,
+    icon: "material_symbols_pets",
     name: "pet-friendly facilities",
   },
   {
-    icon: game_icons_rooftop,
+    icon: "game_icons_rooftop",
     name: "Rooftop garden",
   },
   {
-    icon: material_symbols_concierge_outline_rounded,
+    icon: "material_symbols_concierge_outline_rounded",
     name: "Concierge services",
   },
   {
-    icon: healthicons_security_worker_outline,
+    icon: "healthicons_security_worker_outline",
     name: "24/7 security",
   },
   {
-    icon: game_icons_gate,
+    icon: "game_icons_gate",
     name: "Gated community",
   },
   {
-    icon: ic_outline_local_laundry_service,
+    icon: "ic_outline_local_laundry_service",
     name: "On-site laundry facilities",
   },
   {
-    icon: pepicons_pencil_bicycle_circle,
+    icon: "pepicons_pencil_bicycle_circle",
     name: "Bicycle storage",
   },
   {
-    icon: carbon_tool_kit,
+    icon: "carbon_tool_kit",
     name: "repair station",
   },
   {
-    icon: guidance_charging_station,
+    icon: "guidance_charging_station",
     name: "Electric vehicle charging stations",
   },
   {
-    icon: guidance_office,
+    icon: "guidance_office",
     name: "Co-working space",
   },
   {
-    icon: material_symbols_add_business_outline_rounded,
+    icon: "material_symbols_add_business_outline_rounded",
     name: "Business centre",
   },
   {
-    icon: guidance_conference_room,
+    icon: "guidance_conference_room",
     name: "Private meeting rooms",
   },
   {
-    icon: mdi_cinema,
+    icon: "mdi_cinema",
     name: "Entertainment room",
   },
   {
-    icon: mdi_cinema,
+    icon: "mdi_cinema",
     name: "Movie screening room",
   },
   {
-    icon: carbon_cafe,
+    icon: "carbon_cafe",
     name: "Coffee bar",
   },
   {
-    icon: mdi_grill_outline,
+    icon: "mdi_grill_outline",
     name: "Outdoor grilling areas",
   },
   {
-    icon: game_icons_fire_ring,
+    icon: "game_icons_fire_ring",
     name: "Fire pits",
   },
   {
-    icon: game_icons_fireplace,
+    icon: "game_icons_fireplace",
     name: "Fireplaces",
   },
   {
-    icon: iconoir_yoga,
+    icon: "iconoir_yoga",
     name: "meditation area",
   },
   {
-    icon: fluent_emoji_high_contrast_artist,
+    icon: "fluent_emoji_high_contrast_artist",
     name: "Art studio",
   },
   {
-    icon: guidance_gallery,
+    icon: "guidance_gallery",
     name: "gallery space",
   },
   {
-    icon: game_icons_cellar_barrels,
+    icon: "game_icons_cellar_barrels",
     name: "Wine cellar",
   },
   {
-    icon: game_icons_hot_meal,
+    icon: "game_icons_hot_meal",
     name: "Tasting room",
   },
   {
-    icon: ion_library_outline,
+    icon: "ion_library_outline",
     name: "Library",
   },
   {
-    icon: ant_design_read_outlined,
+    icon: "ant_design_read_outlined",
     name: "Reading room",
   },
   {
-    icon: map_grocery_or_supermarket,
+    icon: "map_grocery_or_supermarket",
     name: "On-site convenience store",
   },
   {
-    icon: game_icons_golf_flag,
+    icon: "game_icons_golf_flag",
     name: "Indoor sports simulator",
   },
   {
-    icon: mdi_locker_multiple,
+    icon: "mdi_locker_multiple",
     name: "Parcel locker system",
   },
   {
-    icon: map_grocery_or_supermarket,
+    icon: "map_grocery_or_supermarket",
     name: "Market",
   },
   {
-    icon: material_symbols_local_car_wash_outline_sharp,
+    icon: "material_symbols_local_car_wash_outline_sharp",
     name: "Car wash",
   },
   {
-    icon: healthicons_discharge_lounge_outline,
+    icon: "healthicons_discharge_lounge_outline",
     name: "Rooftop bar or lounge",
   },
   {
-    icon: la_hot_tub,
+    icon: "la_hot_tub",
     name: "Outdoor hot tub",
   },
   {
-    icon: game_icons_trail,
+    icon: "game_icons_trail",
     name: "Jogging track",
   },
   {
-    icon: fluent_sport_basketball_24_regular,
+    icon: "fluent_sport_basketball_24_regular",
     name: "Bocce ball court",
   },
   {
-    icon: healthicons_discharge_lounge_outline,
+    icon: "healthicons_discharge_lounge_outline",
     name: "Lounge areas",
   },
   {
-    icon: carbon_soil_moisture_field,
+    icon: "carbon_soil_moisture_field",
     name: "Community garden plots",
   },
   {
-    icon: game_icons_trail,
+    icon: "game_icons_trail",
     name: "Walking trails",
   },
   {
-    icon: u_dumbbell,
+    icon: "u_dumbbell",
     name: "Personal training services",
   },
   {
-    icon: Pickleball,
+    icon: "Pickleball",
     name: "Pickleball court",
   },
   {
-    icon: P_3,
+    icon: "P_3",
     name: "Group fitness classes",
   },
   {
-    icon: material_symbols_sauna,
+    icon: "material_symbols_sauna",
     name: "Sauna",
   },
   {
-    icon: iconoir_balcony,
+    icon: "iconoir_balcony",
     name: "Private balconies",
   },
   {
-    icon: healthicons_discharge_lounge_outline,
+    icon: "healthicons_discharge_lounge_outline",
     name: "Patios",
   },
   {
-    icon: mdi_smart_home,
+    icon: "mdi_smart_home",
     name: "Smart home technology ",
   },
   {
-    icon: mdi_energy_circle,
+    icon: "mdi_energy_circle",
     name: "Energy-efficient appliances",
   },
   {
-    icon: ic_sharp_solar_power,
+    icon: "ic_sharp_solar_power",
     name: "Solar panels",
   },
   {
-    icon: icon_park_outline_green_new_energy,
+    icon: "icon_park_outline_green_new_energy",
     name: "Green energy initiatives",
   },
   {
-    icon: iconoir_balcony,
+    icon: "iconoir_balcony",
     name: "Picnic pavilion with BBQ grills",
   },
   {
-    icon: ph_bus,
+    icon: "ph_bus",
     name: "Shuttle service to public transportation",
   },
   {
-    icon: ph_car,
+    icon: "ph_car",
     name: "On-site car rental service",
   },
   {
-    icon: u_swimmer,
+    icon: "u_swimmer",
     name: "Indoor heated pool",
   },
   {
-    icon: tabler_massage,
+    icon: "tabler_massage",
     name: "Massage therapy room",
   },
   {
-    icon: la_hot_tub,
+    icon: "la_hot_tub",
     name: "Jacuzzi",
   },
   {
-    icon: ph_game_controller_light,
+    icon: "ph_game_controller_light",
     name: "Video game room",
   },
   {
-    icon: fluent_emoji_high_contrast_artist,
+    icon: "fluent_emoji_high_contrast_artist",
     name: "Hobby & craft rooms",
   },
   {
-    icon: game_icons_pool_table_corner,
+    icon: "game_icons_pool_table_corner",
     name: "Billiards room",
   },
   {
-    icon: material_symbols_kayaking,
+    icon: "material_symbols_kayaking",
     name: "kayak storage",
   },
   {
-    icon: ph_boat_fill,
+    icon: "ph_boat_fill",
     name: "Boat Storage",
   },
   {
-    icon: map_playground,
+    icon: "map_playground",
     name: `Children's playroom`,
   },
   {
-    icon: material_symbols_local_car_wash_outline_sharp,
+    icon: "material_symbols_local_car_wash_outline_sharp",
     name: "Washing stations",
   },
   {
-    icon: game_icons_jumping_dog,
+    icon: "game_icons_jumping_dog",
     name: "Pet grooming station",
   },
   {
-    icon: zondicons_music_artist,
+    icon: "zondicons_music_artist",
     name: "Music practice room",
   },
   {
-    icon: iconoir_arcade,
+    icon: "iconoir_arcade",
     name: "Arcade room",
   },
   {
-    icon: material_symbols_soup_kitchen_outline,
+    icon: "material_symbols_soup_kitchen_outline",
     name: "Demonstration kitchen for cooking classes",
   },
   {
-    icon: game_icons_cellar_barrels,
+    icon: "game_icons_cellar_barrels",
     name: "Wine storage lockers",
   },
   {
-    icon: fluent_emoji_high_contrast_closed_mailbox_with_raised_flag,
+    icon: "fluent_emoji_high_contrast_closed_mailbox_with_raised_flag",
     name: "Parcel & mailroom",
   },
   {
-    icon: ph_car,
+    icon: "ph_car",
     name: "Carpool or rideshare program",
   },
   {
-    icon: carbon_tool_kit,
+    icon: "carbon_tool_kit",
     name: "Bicycle repair station",
   },
   {
-    icon: guidance_charging_station,
+    icon: "guidance_charging_station",
     name: "Car charging stations",
   },
   {
-    icon: mdi_cinema,
+    icon: "mdi_cinema",
     name: "Outdoor amphitheater ",
   },
   {
-    icon: guidance_gallery,
+    icon: "guidance_gallery",
     name: "Community art installations",
   },
 ];
@@ -614,16 +614,11 @@ export const ALL_AMENITIES_STORES = [
 
 export const findAmenityByName = (searchName, data) => {
   if (!searchName) return undefined;
-  console.log(
-    "ame",
-    data,
-    searchName,
+
+  return (
     data.find(
       (item) =>
         item.name.trim().toLowerCase() === searchName.trim().toLowerCase()
-    )
-  );
-  return data.find(
-    (item) => item.name.trim().toLowerCase() === searchName.trim().toLowerCase()
+    )?.icon ?? ""
   );
 };

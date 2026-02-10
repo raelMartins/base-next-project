@@ -70,7 +70,7 @@ export const BaseLogin = () => {
 
   if (view === 'success') {
     return (
-      <Flex w='100%' justify='center' align='center'>
+      <Flex w="100%" justify="center" align="center">
         <RealtorApplicationSuccess />
       </Flex>
     );
@@ -78,16 +78,16 @@ export const BaseLogin = () => {
 
   if (view === 'register') {
     return (
-      <Flex w='100%' justify='center' align='center' direction='column'>
-        <Box w='100%' maxW='640px'>
+      <Flex w="100%" justify="center" align="center" direction="column">
+        <Box w="100%" maxW="640px">
           <Link
-            fontSize='14px'
-            color='#5b5b5b'
+            fontSize="14px"
+            color="#5b5b5b"
             mb={3}
-            display='inline-block'
+            display="inline-block"
             onClick={() => setView('login')}
             _hover={{ textDecoration: 'underline' }}
-            cursor='pointer'
+            cursor="pointer"
           >
             ← Back to login
           </Link>
@@ -134,7 +134,7 @@ export const BaseLogin = () => {
             type='email'
             name='email'
             id='email'
-            onChange={(e: any) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             value={email}
             placeholder='Email Address'
             _placeholder={{ fontSize: '13px' }}

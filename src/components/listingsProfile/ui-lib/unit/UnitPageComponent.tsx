@@ -59,6 +59,7 @@ export const UnitPageComponent = ({
         <CloseContainedIcon
           h="48px"
           w="48px"
+          cursor="pointer"
           onClick={closeModal ? closeModal : undefined}
           display={{ base: "none", md: "inline-block" }}
         />

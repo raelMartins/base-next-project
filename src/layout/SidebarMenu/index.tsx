@@ -32,6 +32,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { ReferralsDrawer } from '@/components/referrals/ReferralsDrawer';
 import { deleteCookies } from '@/api/utils/sessionmanagers';
 import { REALTOR_SESSION_KEY, TOKEN_SESSION_KEY } from '@/constants';
+import Link from 'next/link';
 
 interface MenuButtonInterface extends ButtonProps {
   data: SidebarMenuInterface;
@@ -70,7 +71,7 @@ const MenuButton = ({
 
   return (
     <Button
-      as={data?.href ? `a` : `button`}
+      as={data?.href ? Link : `button`}
       href={data?.href}
       bg={activeRoute ? activeLinkColors.bgColor : `transparent`}
       color={activeRoute ? activeLinkColors.color : '#52525B'}
